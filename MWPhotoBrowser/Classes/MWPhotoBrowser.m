@@ -1239,6 +1239,7 @@
     BOOL slideAndFade = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7");
     CGFloat animatonOffset = 20;
     CGFloat animationDuration = (animated ? 0.35 : 0);
+  [self.delegate photoBrowserWillSetControlsHidden:hidden animated:animated animationDuration:animationDuration];
     
     // Status bar
     if (!_leaveStatusBarAlone) {
