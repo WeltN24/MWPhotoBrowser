@@ -1054,6 +1054,13 @@
 	[self updateNavigation];
 }
 
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+  if (_scrollAnimationCompletion) {
+    _scrollAnimationCompletion();
+    _scrollAnimationCompletion = nil;
+  }
+}
+
 #pragma mark - Navigation
 
 - (void)updateNavigation {
@@ -1094,7 +1101,7 @@
 	// Change page
 	if (index < [self numberOfPhotos]) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
-        [_pagingScrollView setContentOffset:CGPointMake(pageFrame.origin.x - PADDING, 0) animated:animated];
+    [_pagingScrollView setContentOffset:CGPointMake(pageFrame.origin.x - PADDING, 0) animated:animated];
 		[self updateNavigation];
 	}
 	
@@ -1407,6 +1414,10 @@
 }
 
 - (void)setCurrentPhotoIndex:(NSUInteger)index {
+  [self setCurrentPhotoIndex:index animated:NO completion:nil];
+}
+
+- (void)setCurrentPhotoIndex:(NSUInteger)index animated:(BOOL)animated completion:(void (^)())completion; {
     // Validate
     NSUInteger photoCount = [self numberOfPhotos];
     if (photoCount == 0) {
@@ -1417,7 +1428,13 @@
     }
     _currentPageIndex = index;
 	if ([self isViewLoaded]) {
-        [self jumpToPageAtIndex:index animated:NO];
+    if (animated) {
+      _scrollAnimationCompletion = completion;
+    }
+        [self jumpToPageAtIndex:index animated:animated];
+    if (!animated) {
+      completion();
+    }
         if (!_viewIsActive)
             [self tilePages]; // Force tiling if view is not visible
     }

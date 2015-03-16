@@ -63,6 +63,7 @@
 
 // Set page that photo browser starts on
 - (void)setCurrentPhotoIndex:(NSUInteger)index;
+- (void)setCurrentPhotoIndex:(NSUInteger)index animated:(BOOL)animated completion:(void (^)())completion;
 - (void)setInitialPageIndex:(NSUInteger)index  __attribute__((deprecated("Use setCurrentPhotoIndex: instead"))); // Depreciated
 
 // Navigation

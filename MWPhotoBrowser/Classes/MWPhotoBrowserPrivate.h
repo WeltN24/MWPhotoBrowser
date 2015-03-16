@@ -11,6 +11,8 @@
 #import "MWGridViewController.h"
 #import "MWZoomingScrollView.h"
 
+typedef void(^MWPhotoBrowserScrollAnimationCompletion)(void);
+
 // Declare private methods of browser
 @interface MWPhotoBrowser () {
     
@@ -52,7 +54,9 @@
     UIBarButtonItem *_previousViewControllerBackButton;
     UIImage *_previousNavigationBarBackgroundImageDefault;
     UIImage *_previousNavigationBarBackgroundImageLandscapePhone;
-    
+  
+  MWPhotoBrowserScrollAnimationCompletion _scrollAnimationCompletion;
+  
     // Misc
     BOOL _hasBelongedToViewController;
     BOOL _isVCBasedStatusBarAppearance;
