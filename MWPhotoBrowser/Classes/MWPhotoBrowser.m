@@ -1418,12 +1418,12 @@
 }
 
 - (void)setCurrentPhotoIndex:(NSUInteger)index animated:(BOOL)animated completion:(void (^)())completion; {
-  if (index == _currentPageIndex) {
-    if (completion) {
-      completion();
-      return;
+    if (index == _currentPageIndex) {
+      if (completion) {
+        completion();
+        return;
+      }
     }
-  }
   
     // Validate
     NSUInteger photoCount = [self numberOfPhotos];
