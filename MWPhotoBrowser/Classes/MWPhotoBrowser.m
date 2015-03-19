@@ -1046,7 +1046,9 @@
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
 	// Hide controls when dragging begins
-	[self setControlsHidden:YES animated:YES permanent:NO];
+  if (self.hideControlsWhenSwipe) {
+    [self setControlsHidden:YES animated:YES permanent:NO];
+  }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
@@ -1102,8 +1104,11 @@
 	if (index < [self numberOfPhotos]) {
 		CGRect pageFrame = [self frameForPageAtIndex:index];
     [_pagingScrollView setContentOffset:CGPointMake(pageFrame.origin.x - PADDING, 0) animated:animated];
-		[self updateNavigation];
-	}
+    
+    if (!animated) {
+      [self updateNavigation];
+    }
+  }
 	
 	// Update timer to give more time
 	[self hideControlsAfterDelay];
@@ -1246,8 +1251,11 @@
     BOOL slideAndFade = SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7");
     CGFloat animatonOffset = 20;
     CGFloat animationDuration = (animated ? 0.35 : 0);
-  [self.delegate photoBrowserWillSetControlsHidden:hidden animated:animated animationDuration:animationDuration];
-    
+  
+    if ([self.delegate respondsToSelector:@selector(photoBrowserWillSetControlsHidden:animated:animationDuration:)]) {
+      [self.delegate photoBrowserWillSetControlsHidden:hidden animated:animated animationDuration:animationDuration];
+    }
+  
     // Status bar
     if (!_leaveStatusBarAlone) {
         if ([self respondsToSelector:@selector(setNeedsStatusBarAppearanceUpdate)]) {
