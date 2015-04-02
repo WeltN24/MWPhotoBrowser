@@ -216,7 +216,13 @@
     
     // Navigation buttons
     if ([self.navigationController.viewControllers objectAtIndex:0] == self) {
-        // We're first on stack so show done button
+      if (self.doneButtonImage) {
+        _doneButton = [[UIBarButtonItem alloc]initWithImage:self.doneButtonImage
+                                                           style:UIBarButtonItemStylePlain
+                                                          target:self
+                                                          action:@selector(doneButtonPressed:)];
+      } else {
+      // We're first on stack so show done button
         _doneButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStylePlain target:self action:@selector(doneButtonPressed:)];
         // Set appearance
         if ([UIBarButtonItem respondsToSelector:@selector(appearance)]) {
@@ -227,7 +233,9 @@
             [_doneButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateNormal];
             [_doneButton setTitleTextAttributes:[NSDictionary dictionary] forState:UIControlStateHighlighted];
         }
-        self.navigationItem.rightBarButtonItem = _doneButton;
+      }
+      
+      self.navigationItem.rightBarButtonItem = _doneButton;
     } else {
         // We're not first so show back button
         UIViewController *previousViewController = [self.navigationController.viewControllers objectAtIndex:self.navigationController.viewControllers.count-2];
@@ -1090,6 +1098,7 @@
         } else {
           self.titleLabel.text = [NSString stringWithFormat:@"%lu %@ %lu", (unsigned long)(_currentPageIndex+1), NSLocalizedString(@"of", @"Used in the context: 'Showing 1 of 3 items'"), (unsigned long)numberOfPhotos];
         }
+      [self.titleLabel sizeToFit];
 	} else {
 		self.title = nil;
 	}
