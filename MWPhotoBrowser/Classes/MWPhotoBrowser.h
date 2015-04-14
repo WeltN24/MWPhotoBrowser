@@ -54,7 +54,7 @@
 @property (nonatomic) BOOL enableSwipeToDismiss;
 @property (nonatomic) BOOL startOnGrid;
 @property (nonatomic) BOOL hideControlsWhenSwipe;
-@property (nonatomic) NSUInteger delayToHideElements;
+@property (nonatomic) NSUInteger delayToHideElements; // It it is zero elements are not hidden
 @property (nonatomic, readonly) NSUInteger currentIndex;
 
 // Init

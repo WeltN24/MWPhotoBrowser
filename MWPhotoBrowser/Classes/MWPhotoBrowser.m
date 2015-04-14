@@ -1418,7 +1418,10 @@
 - (void)hideControlsAfterDelay {
 	if (![self areControlsHidden]) {
         [self cancelControlHiding];
-		_controlVisibilityTimer = [NSTimer scheduledTimerWithTimeInterval:self.delayToHideElements target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
+    
+    if (self.delayToHideElements > 0) {
+      _controlVisibilityTimer = [NSTimer scheduledTimerWithTimeInterval:self.delayToHideElements target:self selector:@selector(hideControls) userInfo:nil repeats:NO];
+    }
 	}
 }
 
