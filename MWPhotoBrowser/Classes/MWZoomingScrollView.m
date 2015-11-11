@@ -212,16 +212,11 @@
         // Zoom image to fill if the aspect ratios are fairly similar
         CGSize boundsSize = self.bounds.size;
         CGSize imageSize = _photoImageView.image.size;
-        CGFloat boundsAR = boundsSize.width / boundsSize.height;
-        CGFloat imageAR = imageSize.width / imageSize.height;
         CGFloat xScale = boundsSize.width / imageSize.width;    // the scale needed to perfectly fit the image width-wise
         CGFloat yScale = boundsSize.height / imageSize.height;  // the scale needed to perfectly fit the image height-wise
-        // Zooms standard portrait images on a 3.5in screen but not on a 4in screen.
-        if (ABS(boundsAR - imageAR) < 0.17) {
-            zoomScale = MAX(xScale, yScale);
-            // Ensure we don't zoom in or out too far, just in case
-            zoomScale = MIN(MAX(self.minimumZoomScale, zoomScale), self.maximumZoomScale);
-        }
+        zoomScale = MIN(xScale, yScale);
+        // Ensure we don't zoom in or out too far, just in case
+        zoomScale = MIN(MAX(self.minimumZoomScale, zoomScale), self.maximumZoomScale);
     }
     return zoomScale;
 }
@@ -269,9 +264,6 @@
     
     // If we're zooming to fill then centralise
     if (self.zoomScale != minScale) {
-        // Centralise
-        self.contentOffset = CGPointMake((imageSize.width * self.zoomScale - boundsSize.width) / 2.0,
-                                         (imageSize.height * self.zoomScale - boundsSize.height) / 2.0);
         // Disable scrolling initially until the first pinch to fix issues with swiping on an initally zoomed in photo
         self.scrollEnabled = NO;
     }
