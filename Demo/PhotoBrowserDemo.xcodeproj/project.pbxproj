@@ -26,7 +26,7 @@
 		0E3D58EA1805629E0000E3A0 /* photo7t.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E3D58E21805629E0000E3A0 /* photo7t.jpg */; };
 		0E3D58EB1805629E0000E3A0 /* photo8t.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0E3D58E31805629E0000E3A0 /* photo8t.jpg */; };
 		0E76FFEF1573FE1A000EE5CA /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0E76FFEE1573FE1A000EE5CA /* MWPhotoBrowser.bundle */; };
-		0E76FFF21573FE25000EE5CA /* libMWPhotoBrowser.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E76FFED1573FE14000EE5CA /* libMWPhotoBrowser.a */; };
+		0E76FFF21573FE25000EE5CA /* MWPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E76FFED1573FE14000EE5CA /* MWPhotoBrowser.framework */; };
 		0E8515C617FC781600FE1EF3 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8515C517FC781600FE1EF3 /* QuartzCore.framework */; };
 		0E8515D017FCC34700FE1EF3 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E8515CF17FCC34700FE1EF3 /* AssetsLibrary.framework */; };
 		0E85B24C14C6F40500EA35BF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0E85B24E14C6F40500EA35BF /* Localizable.strings */; };
@@ -38,6 +38,8 @@
 		4C6F97A214AF734900F8389A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F97A114AF734900F8389A /* AppDelegate.m */; };
 		4C6F97B314AF737E00F8389A /* Menu.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C6F97B214AF737E00F8389A /* Menu.m */; };
 		4C6F97C914AF750400F8389A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C6F97C814AF750400F8389A /* MessageUI.framework */; };
+		C76817D91F1E120000D801F8 /* MWPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E76FFED1573FE14000EE5CA /* MWPhotoBrowser.framework */; };
+		C76817DA1F1E120000D801F8 /* MWPhotoBrowser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0E76FFED1573FE14000EE5CA /* MWPhotoBrowser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +54,31 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 0E76FFE51573FE13000EE5CA /* MWPhotoBrowser.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = 4C6F96C314AF704100F8389A;
+			remoteGlobalIDString = C76817961F1E0E5E00D801F8;
+			remoteInfo = MWPhotoBrowser;
+		};
+		C76817DB1F1E120000D801F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E76FFE51573FE13000EE5CA /* MWPhotoBrowser.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C76817961F1E0E5E00D801F8;
 			remoteInfo = MWPhotoBrowser;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C76817DD1F1E120000D801F8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C76817DA1F1E120000D801F8 /* MWPhotoBrowser.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0E17D70017FAE1A80094ABF6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -104,9 +127,10 @@
 				0E3CF61C18CF322F000EC5F2 /* MapKit.framework in Frameworks */,
 				0E8515D017FCC34700FE1EF3 /* AssetsLibrary.framework in Frameworks */,
 				0E8515C617FC781600FE1EF3 /* QuartzCore.framework in Frameworks */,
-				0E76FFF21573FE25000EE5CA /* libMWPhotoBrowser.a in Frameworks */,
+				0E76FFF21573FE25000EE5CA /* MWPhotoBrowser.framework in Frameworks */,
 				0EA380351573EA53003F4582 /* ImageIO.framework in Frameworks */,
 				4C6F97C914AF750400F8389A /* MessageUI.framework in Frameworks */,
+				C76817D91F1E120000D801F8 /* MWPhotoBrowser.framework in Frameworks */,
 				4C6F979214AF734900F8389A /* UIKit.framework in Frameworks */,
 				4C6F979414AF734900F8389A /* Foundation.framework in Frameworks */,
 				4C6F979614AF734900F8389A /* CoreGraphics.framework in Frameworks */,
@@ -119,7 +143,7 @@
 		0E76FFE61573FE13000EE5CA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0E76FFED1573FE14000EE5CA /* libMWPhotoBrowser.a */,
+				0E76FFED1573FE14000EE5CA /* MWPhotoBrowser.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -224,11 +248,13 @@
 				4C6F978914AF734800F8389A /* Sources */,
 				4C6F978A14AF734800F8389A /* Frameworks */,
 				4C6F978B14AF734800F8389A /* Resources */,
+				C76817DD1F1E120000D801F8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				0E76FFF11573FE21000EE5CA /* PBXTargetDependency */,
+				C76817DC1F1E120000D801F8 /* PBXTargetDependency */,
 			);
 			name = PhotoBrowserDemo;
 			productName = PhotoBrowserDemo;
@@ -273,10 +299,10 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		0E76FFED1573FE14000EE5CA /* libMWPhotoBrowser.a */ = {
+		0E76FFED1573FE14000EE5CA /* MWPhotoBrowser.framework */ = {
 			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libMWPhotoBrowser.a;
+			fileType = wrapper.framework;
+			path = MWPhotoBrowser.framework;
 			remoteRef = 0E76FFEC1573FE14000EE5CA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -329,6 +355,11 @@
 			isa = PBXTargetDependency;
 			name = MWPhotoBrowser;
 			targetProxy = 0E76FFF01573FE21000EE5CA /* PBXContainerItemProxy */;
+		};
+		C76817DC1F1E120000D801F8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MWPhotoBrowser;
+			targetProxy = C76817DB1F1E120000D801F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -422,6 +453,7 @@
 				GCC_PREFIX_HEADER = "PhotoBrowserDemo/PhotoBrowserDemo-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "PhotoBrowserDemo/PhotoBrowserDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
@@ -443,6 +475,7 @@
 				GCC_PREFIX_HEADER = "PhotoBrowserDemo/PhotoBrowserDemo-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
 				INFOPLIST_FILE = "PhotoBrowserDemo/PhotoBrowserDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
